@@ -1,3 +1,14 @@
+Plan of presentation
+
+- Why use sql builder? orm, vs low level sql like jdbc template
+- What are cool features of jooq and why it might be worth looking at it
+- Simple non type safe sql, boring
+- Simple type safe queries, with type safe mappings
+- Complex queries with type safety and mappings
+
+## Basic showcase
+
+
 ## Code generation
 
 You can use jooq code gen functionality to generate classes based on your db, those later can be used to write typesafe
