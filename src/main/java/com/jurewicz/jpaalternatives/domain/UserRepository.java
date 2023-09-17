@@ -29,11 +29,10 @@ public class UserRepository {
     }
 
     public Optional<User> getUserByEmail(String email) {
-        SelectConditionStep<Record3<Long, String, String>> where = this.dsl
+        return this.dsl
                 .select(USERS.ID, USERS.NAME, USERS.EMAIL)
                 .from(USERS)
-                .where(USERS.EMAIL.equalIgnoreCase(email));
-        return where
+                .where(USERS.EMAIL.equalIgnoreCase(email))
                 .fetchOptional(mapping(User::new));
     }
 }
