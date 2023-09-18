@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.jurewicz</groupId>
-    <artifactId>jpa-alternatives</artifactId>
+    <artifactId>jooq-showcase</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>jpa-alternatives</name>
     <description>jpa-alternatives</description>

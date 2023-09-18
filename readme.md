@@ -6,6 +6,70 @@ Plan of presentation
 - Simple type safe queries, with type safe mappings
 - Complex queries with type safety and mappings
 
+## What is jooq - jOOQ java Object Oriented Querying
+- sql query builder
+- light database-mapping software library in Java that implements the active record pattern.
+- abstraction over jdbc, close to sql, not orm
+- type safe
+- vendor neutral
+- fluent api
+
+## Why use query builder? 
+
+Orm vs QueryBuilder vs plain sql discussion
+
+
+
+#### Why use orm? Why not use orm? 
+
+<details>
+  <summary>ORM</summary>
+Some of the good
+- Fast development, Allow for really quick prototyping if you don't have schema locked yet
+- No SQL 
+- Caching done for you
+- Crud for free
+- Less boilerplate
+- Sometimes you end up writing your own ORM so why not use something that already works
+
+Some of the bad
+- Can get slow very quickly as you don't really know what sql will be executed without looking under the hood
+- When using an ORM, rather than getting further from SQL (which seems to be the intent), you spend tweaking ORM to generate performant SQL;
+- For complex queries you often end writing sql anyway in inferior sql dialect (JPQL)
+- The object-relational mismatch
+
+- Another layer that you need to learn, Lots of "gotchas" when using ORMs. Example for jpa specifically:
+  - [n+1](https://medium.com/geekculture/resolve-hibernate-n-1-problem-f0e049e689ab)
+  - [Hibernate Lifecycle | States in Hibernate: Transient, Persistent, Detached, Removed](https://nikhilsukhani.medium.com/hibernate-lifecycle-states-in-hibernate-transient-persistent-detached-removed-40ba2f689b07)
+  - FetchType.LAZY vs FetchType.EAGER - [LazyInitializationException](https://thorben-janssen.com/lazyinitializationexception/)
+  - Pessimistic Locking vs Optimistic Locking - [OptimisticLockException](https://www.baeldung.com/jpa-optimistic-locking)
+  - [Identity - equals & hashcode](https://thorben-janssen.com/ultimate-guide-to-implementing-equals-and-hashcode-with-hibernate/#when-and-why-you-need-to-implement-equals-and-hashcode)
+  - [Open Session in View anti-pattern](https://vladmihalcea.com/the-open-session-in-view-anti-pattern/) 
+  - Like everywhere caching is hard and comes [with its own problems](https://blog.lunatech.com/posts/2020-03-23-when-hibernate-caching-can-go-wrong)
+
+</details>
+
+#### PlainSql
+
+<details>
+  <summary>Plain SQL?</summary>
+
+Good
+
+Bad
+- No typesafety
+- No syntax safety
+- No bind value index safety
+- Verbose SQL String concatenation
+- Boring bind value indexing techniques
+- Verbose resource and exception handling in JDBC
+- A very "stateful", not very object-oriented JDBC API, which is hard to use
+</details>
+
+#### QueryBuilder
+TODO
+https://www.jooq.org/doc/3.19/manual-single-page/#use-cases
+
 ## Basic showcase
 
 
@@ -45,11 +109,9 @@ But this comes with its own set of challenges.
   but )
 - you want this process to be streamlined and easy for developers.
 
-Initially solved this with approach suggested by
-jooq [blog post](https://blog.jooq.org/using-testcontainers-to-generate-jooq-code/)
-using test containers and maven plugins. But then I found that there
-is [plugin](https://testcontainers.com/guides/working-with-jooq-flyway-using-testcontainers/) that already does all
-necessary steps
+Initially solved this with approach suggested by jooq [blog post](https://blog.jooq.org/using-testcontainers-to-generate-jooq-code/) 
+using test containers and maven plugins. 
+But then I found that there is [plugin](https://testcontainers.com/guides/working-with-jooq-flyway-using-testcontainers/) that already does all necessary steps 
 
 Old approach.
 
