@@ -1,16 +1,29 @@
-DELETE FROM comments;
-DELETE FROM posts;
-DELETE FROM users;
+INSERT INTO language (id, cd, description) VALUES (1, 'en', 'English');
+INSERT INTO language (id, cd, description) VALUES (2, 'de', 'Deutsch');
+INSERT INTO language (id, cd, description) VALUES (3, 'fr', 'Français');
+INSERT INTO language (id, cd, description) VALUES (4, 'pt', 'Português');
 
-INSERT INTO users(id, name, email) VALUES
-                                       (1, 'Siva', 'siva@gmail.com'),
-                                       (2, 'Oleg', 'oleg@gmail.com');
+INSERT INTO author (id, first_name, last_name, date_of_birth    , year_of_birth)
+VALUES           (1 , 'George'  , 'Orwell' , DATE '1903-06-26', 1903         );
+INSERT INTO author (id, first_name, last_name, date_of_birth    , year_of_birth)
+VALUES           (2 , 'Paulo'   , 'Coelho' , DATE '1947-08-24', 1947         );
 
-INSERT INTO posts(id, title, content, created_by, created_at) VALUES
-                                                                  (1, 'Post 1 Title', 'Post 1 content', 1, CURRENT_TIMESTAMP),
-                                                                  (2, 'Post 2 Title', 'Post 2 content', 2, CURRENT_TIMESTAMP);
+INSERT INTO book (id, author_id, title         , published_in, language_id)
+VALUES         (1 , 1        , '1984'        , 1948        , 1          );
+INSERT INTO book (id, author_id, title         , published_in, language_id)
+VALUES         (2 , 1        , 'Animal Farm' , 1945        , 1          );
+INSERT INTO book (id, author_id, title         , published_in, language_id)
+VALUES         (3 , 2        , 'O Alquimista', 1988        , 4          );
+INSERT INTO book (id, author_id, title         , published_in, language_id)
+VALUES         (4 , 2        , 'Brida'       , 1990        , 2          );
 
-INSERT INTO comments(id, name, content, post_id, created_at) VALUES
-                                                                 (1, 'Ron', 'Comment 1', 1, CURRENT_TIMESTAMP),
-                                                                 (2, 'James', 'Comment 2', 1, CURRENT_TIMESTAMP),
-                                                                 (3, 'Robert', 'Comment 3', 2, CURRENT_TIMESTAMP);
+INSERT INTO book_store VALUES ('Orell Füssli');
+INSERT INTO book_store VALUES ('Ex Libris');
+INSERT INTO book_store VALUES ('Buchhandlung im Volkshaus');
+
+INSERT INTO book_to_book_store VALUES ('Orell Füssli'             , 1, 10);
+INSERT INTO book_to_book_store VALUES ('Orell Füssli'             , 2, 10);
+INSERT INTO book_to_book_store VALUES ('Orell Füssli'             , 3, 10);
+INSERT INTO book_to_book_store VALUES ('Ex Libris'                , 1, 1 );
+INSERT INTO book_to_book_store VALUES ('Ex Libris'                , 3, 2 );
+INSERT INTO book_to_book_store VALUES ('Buchhandlung im Volkshaus', 3, 1 );
